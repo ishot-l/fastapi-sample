@@ -7,7 +7,7 @@ on:
       - .github/workflows/deploy-pr.yaml
 
 env:
-  REGISTORY: ghcr.io
+  REGISTRY: ghcr.io
 
 jobs:
   build-and-push-image:
@@ -20,12 +20,12 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTORY }}/${{ github.repository }}
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
 
-      - name: Log in to Github Container Registory
+      - name: Log in to Github Container Registry
         uses: docker/login-action@v3
         with:
-          registory: ${{ env.REGISTORY }}
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
